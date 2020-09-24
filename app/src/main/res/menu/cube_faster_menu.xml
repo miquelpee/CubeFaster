@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/t3x3"
+        android:title="3x3 Tournament"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/s3x3"
+        android:title="3x3 Single"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/stats"
+        android:title="Statistics"
+        app:showAsAction="never" />
+
+</menu>
