@@ -38,6 +38,7 @@ public class ResultPage extends AppCompatActivity {
         btn_tryAgain = (Button) findViewById(R.id.btn_tryAgain);
         btn_save = (Button) findViewById(R.id.btn_save);
 
+        //Received times from main activity, sorting them and adding times to textviews.
         Intent intent = getIntent();
         final ArrayList<CharSequence> times = (ArrayList<CharSequence>) getIntent().getSerializableExtra("times");
         Collections.sort(times,null);
@@ -49,9 +50,11 @@ public class ResultPage extends AppCompatActivity {
         textView_5th.setText(String.valueOf(times.get(4)));
         textView_5th.setPaintFlags(textView_5th.getPaintFlags()| Paint.STRIKE_THRU_TEXT_FLAG);
 
+        //Calculating average.
         int averageTime = (cubeFasterHelpers.timeToMilliseconds((times.get(1))) + cubeFasterHelpers.timeToMilliseconds(times.get(2)) + cubeFasterHelpers.timeToMilliseconds(times.get(3))) / 3;
         textView_result.setText(String.valueOf(cubeFasterHelpers.timeConvert((averageTime))));
 
+        //Starting new tournament.
         btn_tryAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,6 +63,7 @@ public class ResultPage extends AppCompatActivity {
             }
         });
 
+        //Saving times to db.
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

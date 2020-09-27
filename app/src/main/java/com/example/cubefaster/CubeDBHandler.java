@@ -28,6 +28,7 @@ public class CubeDBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
     }
 
+    //Create db in case it doesn't exist.
     @Override
     public void onCreate(SQLiteDatabase db){
         db.execSQL("create table " + TABLE_CUBE_STATS +
@@ -41,6 +42,7 @@ public class CubeDBHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    //Adding tournament times. Based on returned result giving feedback in activity.
     public boolean addT3x3data(String gameType, Date date, String time1, String time2, String time3, String time4, String time5, String avgTime){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -61,6 +63,7 @@ public class CubeDBHandler extends SQLiteOpenHelper {
             return true;
     }
 
+    //Adding single time. Based on returned result giving feedback in activity.
     public boolean addS3x3data(String gameType, Date date, String time1){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -76,30 +79,35 @@ public class CubeDBHandler extends SQLiteOpenHelper {
             return true;
     }
 
+    //Reading tournament times.
     public Cursor getT3x3Data(){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor data = db.rawQuery("SELECT * FROM " + TABLE_CUBE_STATS + " WHERE GAME_TYPE = 'T3x3' ORDER BY TIME_AVG ASC",null);
         return data;
     }
 
+    //Reading tournament times for deleting.
     public Cursor getT3x3DataDel(){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor data = db.rawQuery("SELECT ID, TIME_AVG FROM " + TABLE_CUBE_STATS + " WHERE GAME_TYPE = 'T3x3' ORDER BY TIME_AVG ASC",null);
         return data;
     }
 
+    //Reading single times.
     public Cursor getS3x3Data(){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor data = db.rawQuery("SELECT * FROM " + TABLE_CUBE_STATS + " WHERE GAME_TYPE = 'S3x3' ORDER BY TIME1 ASC",null);
         return data;
     }
 
+    //Reading single times for deleting.
     public Cursor getS3x3DataDel(){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor data = db.rawQuery("SELECT ID, TIME1 FROM " + TABLE_CUBE_STATS + " WHERE GAME_TYPE = 'S3x3' ORDER BY TIME1 ASC",null);
         return data;
     }
 
+    //Deleting tournament times.
     public boolean delT3x3Data(String id){
         SQLiteDatabase db = this.getWritableDatabase();
         long result = db.delete(TABLE_CUBE_STATS,"ID = " + id, null);
@@ -110,6 +118,7 @@ public class CubeDBHandler extends SQLiteOpenHelper {
             return true;
     }
 
+    //Deleting single times.
     public boolean delS3x3Data(String id){
         SQLiteDatabase db = this.getWritableDatabase();
         long result = db.delete(TABLE_CUBE_STATS,"ID = " + id, null);

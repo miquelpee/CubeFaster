@@ -4,6 +4,9 @@ import java.util.concurrent.TimeUnit;
 
 public class CubeFasterHelpers {
 
+    //Helpers to show formatted times in activities.
+
+    //Converting times to milliseconds.
     public int timeToMilliseconds(CharSequence time){
         String timeX = (String) time;
         String[] units = timeX.split(":");
@@ -14,6 +17,7 @@ public class CubeFasterHelpers {
         return duration;
     }
 
+    //Formatting time that it's always mm:ss:mss
     public String timeConvert(int milliseconds){
         long minutes = TimeUnit.MILLISECONDS.toMinutes(milliseconds);
         long seconds = TimeUnit.MILLISECONDS.toSeconds(milliseconds);

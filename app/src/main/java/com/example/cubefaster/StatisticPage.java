@@ -29,11 +29,13 @@ public class StatisticPage extends OptionsMenuActivity {
         cubeDB = new CubeDBHandler(this);
         int countT = 1, countS = 1;
 
+        //Reading data from db and adding it to Cursor.
         Cursor t3x3 = cubeDB.getT3x3Data();
         StringBuffer t3x3Data = new StringBuffer();
 
         int i = t3x3.getCount();
 
+        //Looping Cursor and writing data to buffer. Placing buffer to textview.
         while(t3x3.moveToNext()){
             t3x3Data.append(">>> " + countT + " <<<\n");
             t3x3Data.append("Round average: " + t3x3.getString(8)+"\n");
@@ -45,9 +47,11 @@ public class StatisticPage extends OptionsMenuActivity {
         }
         textView_t3x3.setText(t3x3Data.toString());
 
+        //Reading data from db and adding it to Cursor.
         Cursor s3x3 = cubeDB.getS3x3Data();
         StringBuffer s3x3Data = new StringBuffer();
 
+        //Looping Cursor and writing data to buffer. Placing buffer to textview.
         while(s3x3.moveToNext()){
             s3x3Data.append(">>> " + countS + " <<<\n");
             s3x3Data.append("Time : " + s3x3.getString(3) + "\n\n");
@@ -55,6 +59,7 @@ public class StatisticPage extends OptionsMenuActivity {
         }
         textView_s3x3.setText(s3x3Data.toString());
 
+        //In case user want's to delete times.
         button_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

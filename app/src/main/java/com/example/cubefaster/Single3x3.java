@@ -25,6 +25,7 @@ public class Single3x3 extends OptionsMenuActivity {
     TextView textView_time, textView_scramble;
     int round = 0;
 
+    //Cube timing.
     Runnable updateTimeThread = new Runnable() {
         @Override
         public void run() {
@@ -54,9 +55,11 @@ public class Single3x3 extends OptionsMenuActivity {
         textView_time.setText("Cube Faster!");
         textView_scramble = (TextView) findViewById(R.id.textView_scramble);
 
+        //Scramble the cube.
         CubeFasterScrambleGenerator scrambler = new CubeFasterScrambleGenerator(25);
         textView_scramble.setText(scrambler.getScramble());
 
+        //Using one button to start and stop new time.
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -83,6 +86,7 @@ public class Single3x3 extends OptionsMenuActivity {
             }
         });
 
+        //Saving time to db.
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -21,6 +21,7 @@ public class MainActivity extends OptionsMenuActivity {
     ArrayList<CharSequence> times = new ArrayList<CharSequence>();
     int round = 0;
 
+    //Cube timing.
     Runnable updateTimeThread = new Runnable() {
         @Override
         public void run() {
@@ -57,10 +58,12 @@ public class MainActivity extends OptionsMenuActivity {
         textView_5th = (TextView) findViewById(R.id.textView_5th);
         textView_5th.setText("Fifth round time...");
 
+        //Scramble the cube.
         CubeFasterScrambleGenerator scrambler = new CubeFasterScrambleGenerator(25);
         textView_scramble = (TextView) findViewById(R.id.textView_scramble);
         textView_scramble.setText(scrambler.getScramble());
 
+        //Going through all five tournament times using switch-case. At the end moving to another activity.
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,6 +75,7 @@ public class MainActivity extends OptionsMenuActivity {
 
                 switch (round) {
                     case 1:
+                        //Stopping time. Converting time to milliseconds and then converting time to format mm:ss:mss. Same goes to all cases.
                         timeHandler.removeCallbacks(updateTimeThread);
                         duration = cubeFasterHelpers.timeToMilliseconds(textView_time.getText());
                         time = cubeFasterHelpers.timeConvert((duration));

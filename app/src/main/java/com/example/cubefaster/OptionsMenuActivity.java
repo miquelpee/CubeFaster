@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class OptionsMenuActivity extends AppCompatActivity {
 
+    //Creating menu for the app.
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
@@ -17,6 +18,7 @@ public class OptionsMenuActivity extends AppCompatActivity {
         return true;
     }
 
+    //In case item is clicked. Starting activity.
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){

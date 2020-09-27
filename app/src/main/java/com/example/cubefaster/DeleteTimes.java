@@ -20,6 +20,7 @@ public class DeleteTimes extends AppCompatActivity{
 
     CubeDBHandler cubeDB;
 
+    //Reading tournament times data from db and adding them to listview.
     public ListView getT3x3Data(){
         ListView t3x3ListView = (ListView) findViewById(R.id.delete_t3x3);
         cubeDB = new CubeDBHandler(this);
@@ -37,6 +38,7 @@ public class DeleteTimes extends AppCompatActivity{
         return t3x3ListView;
     }
 
+    //Reading single times data from db and adding them to listview.
     public ListView getS3x3Data(){
         ListView s3x3ListView = (ListView) findViewById(R.id.delete_s3x3);
         cubeDB = new CubeDBHandler(this);
@@ -63,6 +65,7 @@ public class DeleteTimes extends AppCompatActivity{
         getT3x3Data();
         getS3x3Data();
 
+        //In case tournament time is clicked. Deleting it from db.
         getT3x3Data().setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -80,6 +83,7 @@ public class DeleteTimes extends AppCompatActivity{
             }
         });
 
+        //In case single time is clicked. Deleting it from db.
         getS3x3Data().setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -97,6 +101,7 @@ public class DeleteTimes extends AppCompatActivity{
             }
         });
 
+        //Getting back to main activity.
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
